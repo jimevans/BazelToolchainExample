@@ -23,7 +23,7 @@ def _merged_assembly_impl(ctx):
         executable = ctx.toolchain.merge_tool.path,
         arguments = args,
         inputs = ctx.attr.src_assembly.files,
-        outputs = [ctx.outputs.out]
+        outputs = [ctx.outputs.out],
     )
 
     runfiles = ctx.runfiles(
@@ -47,5 +47,5 @@ merged_assembly = rule(
         "out": attr.output(mandatory = True),
         "keyfile": attr.label(allow_single_file = True),
     },
-    toolchains = ["//tools/ilmerge:ilmerge_toolchain"],
+    toolchains = ["//tools/ilmerge:toolchain_type"],
 )
